@@ -1,0 +1,75 @@
+<h1 mat-dialog-title>Manage Employee</h1>
+<form [formGroup]="employeeForm">
+    <div mat-dialog-content>
+        <mat-form-field class="mat-form-field">
+            <mat-label>firstName</mat-label>
+            <input placeholder="firstName" matInput formControlName="firstName">
+            @if(submitted && f['firstName']['errors'] && f['firstName']['errors']['required']) {
+            <mat-error>You must enter a firstName</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field class="mat-form-field">
+            <mat-label>lastName</mat-label>
+            <input placeholder="lastName" matInput formControlName="lastName">
+            @if(submitted && f['lastName']['errors'] && f['lastName']['errors']['required']) {
+            <mat-error>You must enter a lastName</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field class="mat-form-field">
+            <mat-label>email</mat-label>
+            <input type="email" placeholder="email" matInput formControlName="email">
+            @if(submitted && f['email']['errors'] && f['email']['errors']['required']) {
+            <mat-error>You must enter a email</mat-error>
+            } @else if(submitted && f['email']['errors'] && f['email']['errors']['email']) {
+            <mat-error>Invalid valid Email (Ex. : username&#64;domaine.com)</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field class="mat-form-field">
+            <mat-label>age</mat-label>
+            <input type="number" placeholder="age" matInput formControlName="age">
+            @if(submitted && f['age']['errors'] && f['age']['errors']['required']) {
+            <mat-error>You must enter a age</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field class="mat-form-field">
+            <mat-label>salary</mat-label>
+            <input type="number" placeholder="salary" matInput formControlName="salary">
+            @if(submitted && f['salary']['errors'] && f['salary']['errors']['required']) {
+            <mat-error>You must enter a salary</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field class="mat-form-field">
+            <mat-label>dob</mat-label>
+            <input type="date" placeholder="dob" matInput formControlName="dob">
+            @if(submitted && f['dob']['errors'] && f['dob']['errors']['required']) {
+            <mat-error>You must enter a dob</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field class="mat-form-field">
+            <mat-label>address</mat-label>
+            <input placeholder="address" matInput formControlName="address">
+            @if(submitted && f['address']['errors'] && f['address']['errors']['required']) {
+            <mat-error>You must enter a address</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field class="mat-form-field">
+            <mat-label>contactNumber</mat-label>
+            <input placeholder="contactNumber" matInput formControlName="contactNumber">
+            @if(submitted && f['contactNumber']['errors'] && f['contactNumber']['errors']['required']) {
+            <mat-error>You must enter a contactNumber</mat-error>
+            }
+        </mat-form-field>
+        <div (click)="uploadFile.click()">
+            <button mat-raised-button color="primary">Choose File</button>
+            <input #uploadFile type='file' style="display:none" (change)="onFileSelected($event)"/>
+        </div>
+        @if(submitted && f['imageUrl']['errors'] && f['imageUrl']['errors']['required']) {
+                <mat-error>You must enter a imageUrl</mat-error>
+                }
+    </div>
+    <div mat-dialog-actions align="end">
+        <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+        <button type="submit" mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+    </div>
+</form>

@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { ListEmployeeComponent } from './component/list-employee/list-employee.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [
+    RouterOutlet,
+    ListEmployeeComponent,
+    RouterLink
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
